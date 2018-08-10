@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
     [SerializeField]
     protected float _speed = 3.0f;
     [SerializeField]
-    private bool isGrounded = false;
+    private bool notGrounded = false;
     [SerializeField]
     private LayerMask groundLayer;
     //get handle for rigidbody2d
@@ -46,17 +46,17 @@ public class Player : MonoBehaviour {
         if (hitInfo.collider != null)
         {
             Debug.Log("Hitting: " + hitInfo.collider.name);
-            isGrounded = false;
+            notGrounded = false;
         }
         else
-            isGrounded = true;
+            notGrounded = true;
         
 
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded == false)
+        if(Input.GetKeyDown(KeyCode.Space) && notGrounded == false)
         {
             Debug.Log("Jump!");
             _rigid.velocity = new Vector2(transition, _jumpForce);
-            isGrounded = false;
+            notGrounded = false;
         }
         //2d raycast to the ground
         //if hitInfo != null
