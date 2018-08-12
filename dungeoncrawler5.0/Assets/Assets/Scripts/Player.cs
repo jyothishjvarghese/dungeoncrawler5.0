@@ -30,6 +30,10 @@ public class Player : MonoBehaviour {
 	void Update ()
     {
         Movement();
+        if(Input.GetMouseButtonDown(0) && notGrounded == false)
+        {
+            _player.Attack();
+        }
     }
 
     public void Movement()
@@ -37,8 +41,10 @@ public class Player : MonoBehaviour {
         //horizontal input for left and right
         //current velocity = new velocity (x, velocity.y)
         float transition = Input.GetAxis("Horizontal");
+        
         _rigid.velocity = new Vector2(transition * _speed, _rigid.velocity.y);
         _player.Run(transition);
+        
 
         //check for isGrounded
         //check for Input.GetkeyDOwn.keycode.space
