@@ -50,7 +50,8 @@ public class Player : MonoBehaviour {
         Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
         if (hitInfo.collider != null)
         {
-            Debug.Log("Hitting: " + hitInfo.collider.name);
+            //Debug.Log("Hitting: " + hitInfo.collider.name);
+            
             notGrounded = false;
         }
         else
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour {
             Debug.Log("Jump!");
             _rigid.velocity = new Vector2(transition, _jumpForce);
             notGrounded = false;
+            _anim.Jump();
         }
         //2d raycast to the ground
         //if hitInfo != null
