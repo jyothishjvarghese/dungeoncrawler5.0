@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
     private LayerMask groundLayer;
     //get handle for rigidbody2d
     protected Rigidbody2D _rigid;
+    private PlayerAnimation _player;
     
 
 	// Use this for initialization
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour {
 
         //assign handle for rigidbody
         _rigid = GetComponent<Rigidbody2D>();
+        _player = GetComponent<PlayerAnimation>();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour {
         //current velocity = new velocity (x, velocity.y)
         float transition = Input.GetAxis("Horizontal");
         _rigid.velocity = new Vector2(transition * _speed, _rigid.velocity.y);
+        _player.Run(transition);
 
         //check for isGrounded
         //check for Input.GetkeyDOwn.keycode.space
