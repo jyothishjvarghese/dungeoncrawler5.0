@@ -22,6 +22,10 @@ public class PlayerAnimation : MonoBehaviour
         else if (move > 0)
             _sprite.flipX = false;
 
-    }   
+    }
+    public void Jump()
+    {
+        _anim.SetTrigger("Jump");
+    }
 
 }

@@ -59,6 +59,7 @@ public class Player : MonoBehaviour {
         {
             Debug.Log("Jump!");
             _rigid.velocity = new Vector2(transition, _jumpForce);
+            _player.Jump();
             notGrounded = false;
         }
         //2d raycast to the ground
