@@ -24,14 +24,14 @@ public class MossGiant : Enemy
         Movement();
         
     }
-    void Movement()
+    public void Movement()
     {
-        Debug.Log("Transform.position = " + transform.position);
+        //Debug.Log("Transform.position = " + transform.position);
         if (transform.position == pointA.position)
         {
             _mossGiantAnimator.SetTrigger("Idle");
             _switch = false;
-            _mossGiantEnemy.flipX = false;
+           _mossGiantEnemy.flipX = false;
 
         }
         else if (transform.position == pointB.position)
@@ -50,8 +50,7 @@ public class MossGiant : Enemy
         {
             transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
         }
-        
+
     }
-    
 
 }
