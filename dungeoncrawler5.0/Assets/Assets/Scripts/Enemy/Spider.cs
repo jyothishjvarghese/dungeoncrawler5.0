@@ -28,18 +28,18 @@ public class Spider : Enemy
 	}
     public void Movement()
     {
-        //Debug.Log("Transform.position = " + transform.position);
+        
         if (transform.position == pointA.position)
         {
-            _spiderAnim.SetTrigger("Idle");
             _switch = false;
+            _spiderAnim.SetTrigger("Idle");
             _spiderSprite.flipX = false;
 
         }
         else if (transform.position == pointB.position)
         {
-            _spiderAnim.SetTrigger("Idle");
             _switch = true;
+            _spiderAnim.SetTrigger("Idle");
             _spiderSprite.flipX = true;
 
         }
