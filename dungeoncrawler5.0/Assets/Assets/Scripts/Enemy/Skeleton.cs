@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : Enemy
+public class Skeleton : Enemy, IDamageable
 {
     private bool _switch;
     private Animator _skeletonAnim;
     private SpriteRenderer _skeletonSprite;
+    public int Health { get; set; }
+    public void Damage() { }
+
 
 	// Use this for initialization
 	void Start ()
