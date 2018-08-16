@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     [SerializeField]
-    protected float _jumpForce = 10.0f;
+    protected float _jumpForce = 5.0f;
     [SerializeField]
     protected float _speed = 3.0f;
     [SerializeField]
@@ -50,8 +50,8 @@ public class Player : MonoBehaviour {
         //check for Input.GetkeyDOwn.keycode.space
         //current velocity = new vector2(transition, jumpforce)
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 0.8f, 1 << 8);
-        Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, 1 << 8);
+        Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.green);
         if (hitInfo.collider != null)
         {
             Debug.Log("Hitting: " + hitInfo.collider.name);

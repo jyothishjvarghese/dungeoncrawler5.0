@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : Enemy {
-
+public class Skeleton : Enemy
+{
     private bool _switch;
     private Animator _skeletonAnim;
     private SpriteRenderer _skeletonSprite;
@@ -19,35 +19,36 @@ public class Skeleton : Enemy {
 	// Update is called once per frame
 	public override void Update ()
     {
-        if (_skeletonAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if(_skeletonAnim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             return;
         }
         Movement();
-    }
-    void Movement()
+	}
+    public void Movement()
     {
         if(transform.position == pointA.position)
         {
-            _switch = false;
             _skeletonAnim.SetTrigger("Idle");
+            _switch = false;
             _skeletonSprite.flipX = false;
-            
         }
         else if(transform.position == pointB.position)
         {
-            _switch = true;
             _skeletonAnim.SetTrigger("Idle");
+            _switch = true;
             _skeletonSprite.flipX = true;
         }
 
-        if(_switch == false)
+        if (_switch == false)
         {
             transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
         }
-        if(_switch == true)
+        else if (_switch == true)
         {
             transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
         }
+
     }
+
 }
