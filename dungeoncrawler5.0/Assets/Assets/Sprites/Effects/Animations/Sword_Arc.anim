@@ -20,7 +20,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.33333334
         value: 1
         inSlope: 0
         outSlope: 0
@@ -46,17 +46,21 @@ AnimationClip:
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
-    - time: 0
+    - time: 0.33333334
       value: {fileID: 21300000, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+    - time: 0.4
+      value: {fileID: 21300002, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - time: 0.46666667
-      value: {fileID: 21300006, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+      value: {fileID: 21300004, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - time: 0.53333336
-      value: {fileID: 21300008, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+      value: {fileID: 21300006, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - time: 0.6
-      value: {fileID: 21300010, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+      value: {fileID: 21300008, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - time: 0.6666667
-      value: {fileID: 21300012, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+      value: {fileID: 21300010, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - time: 0.73333335
+      value: {fileID: 21300012, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+    - time: 0.8
       value: {fileID: 21300014, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     attribute: m_Sprite
     path: 
@@ -85,6 +89,8 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+    - {fileID: 21300002, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
+    - {fileID: 21300004, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - {fileID: 21300006, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - {fileID: 21300008, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
     - {fileID: 21300010, guid: a06b610e33055354ca5a2720be5bd72c, type: 3}
@@ -115,7 +121,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.33333334
         value: 1
         inSlope: 0
         outSlope: 0

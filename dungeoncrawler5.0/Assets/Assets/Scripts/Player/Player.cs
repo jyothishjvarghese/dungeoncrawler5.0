@@ -9,9 +9,10 @@ public class Player : MonoBehaviour {
     [SerializeField]
     protected float _speed = 3.0f;
     [SerializeField]
-    private bool notGrounded = false;
+    private bool isGrounded = false;
     [SerializeField]
     private LayerMask groundLayer;
+    private bool resetJumpNeeded;
     //get handle for rigidbody2d
     protected Rigidbody2D _rigid;
     private PlayerAnimation _player;
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour {
 	void Update ()
     {
         Movement();
-        if(Input.GetMouseButtonDown(0) && notGrounded == false)
+        if(Input.GetMouseButtonDown(0) && isGrounded == true)
         {
             _player.Attack();
         }
@@ -38,41 +39,42 @@ public class Player : MonoBehaviour {
 
     public void Movement()
     {
-        //horizontal input for left and right
-        //current velocity = new velocity (x, velocity.y)
+        
         float transition = Input.GetAxis("Horizontal");
         
-        _rigid.velocity = new Vector2(transition * _speed, _rigid.velocity.y);
-        _player.Run(transition);
-        
+              
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        {
+            
+            _rigid.velocity = new Vector2(transition, _jumpForce);
+            _player.Jump();
+            isGrounded = false;
+            resetJumpNeeded = true;
+            StartCoroutine(ResetJumpRoutine());
+        }
 
-        //check for isGrounded
-        //check for Input.GetkeyDOwn.keycode.space
-        //current velocity = new vector2(transition, jumpforce)
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 0.8f, 1 << 8);
+        Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
 
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, 1 << 8);
-        Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.green);
         if (hitInfo.collider != null)
         {
             Debug.Log("Hitting: " + hitInfo.collider.name);
-            notGrounded = false;
+
+            if (resetJumpNeeded == false)
+            {
+                isGrounded = true;
+            }
         }
         else
-            notGrounded = true;
-        
+            isGrounded = false;
 
-        if(Input.GetKeyDown(KeyCode.Space) && notGrounded == false)
-        {
-            Debug.Log("Jump!");
-            _rigid.velocity = new Vector2(transition, _jumpForce);
-            _player.Jump();
-            notGrounded = false;
-        }
-        //2d raycast to the ground
-        //if hitInfo != null
-        //isGrounded = true;
+         _rigid.velocity = new Vector2(transition * _speed, _rigid.velocity.y);
+        _player.Run(transition);
         
-        
-
     }
+    IEnumerator ResetJumpRoutine()
+        {
+            yield return new WaitForSeconds(0.1f);
+            resetJumpNeeded = false;
+        }
 }
