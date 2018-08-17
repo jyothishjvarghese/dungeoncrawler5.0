@@ -13,15 +13,16 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     protected Transform pointA, pointB;
 
-    protected bool _switch; 
+    //protected bool _switch; 
+    protected Vector3 currentTarget;
     protected Animator anim;
     protected SpriteRenderer sprite;
   
 
     public virtual void Init()
     {
-        anim = anim.GetComponentInChildren<Animator>();
-        sprite = sprite.GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
 
     }
     private void Start()
@@ -40,28 +41,32 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Movement()
     {
-       
+       if(currentTarget == pointA.position)
+        {
+            sprite.flipX = true;
+        }
+       else 
+        {
+            sprite.flipX = false;
+        }
        
         if (transform.position == pointA.position)
         {
-            
+            currentTarget = pointB.position;
             anim.SetTrigger("Idle");
-            _switch = false;
-            sprite.flipX = false;
-
+            
+                   
         }
         else if (transform.position == pointB.position)
         {
-            
+            currentTarget = pointA.position;
             anim.SetTrigger("Idle");
-            _switch = true;
-            sprite.flipX = true;
+            
+            
         }
 
-        if(_switch == false)
-         transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
-        else if(_switch == true)
-         transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
+        
+        transform.position = Vector3.MoveTowards(transform.position, currentTarget, speed * Time.deltaTime);
 
 
     }

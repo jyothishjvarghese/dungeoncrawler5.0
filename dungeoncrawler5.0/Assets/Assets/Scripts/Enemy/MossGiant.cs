@@ -8,4 +8,5 @@ public class MossGiant : Enemy
     {
         base.Init();
     }
+    
 }
