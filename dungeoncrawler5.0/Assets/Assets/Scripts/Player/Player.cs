@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
 
         if (hitInfo.collider != null)
         {
-            Debug.Log("Hitting: " + hitInfo.collider.name);
+            //Debug.Log("Hitting: " + hitInfo.collider.name);
 
             if (resetJumpNeeded == false)
             {
