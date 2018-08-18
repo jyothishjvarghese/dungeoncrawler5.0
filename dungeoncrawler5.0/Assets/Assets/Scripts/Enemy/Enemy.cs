@@ -16,12 +16,16 @@ public abstract class Enemy : MonoBehaviour
     protected bool _switch; 
     protected Animator anim;
     protected SpriteRenderer sprite;
-  
+    protected bool isHit = false;
+    //get variable to enemy
+    protected Player playerUnit;
+    private float distanceBetweenPlayerEnemy;
 
     public virtual void Init()
     {
         anim = GetComponentInChildren<Animator>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        playerUnit = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
     }
     private void Start()
@@ -31,7 +35,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Update()
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") && anim.GetBool("InCombat") == false)
         {
             return;
         }
@@ -60,12 +64,25 @@ public abstract class Enemy : MonoBehaviour
             
         }
 
-        if (_switch == false)
-            transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
-        else if(_switch == true)
-            transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
+        if (isHit == false)
 
+        {
+            if (_switch == false)
+                transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
+            else if (_switch == true)
+                transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
+        }
+        //check for distance between enemy and player 
+        //if greater than 2 units
+        //isHit = false 
+        //InCombat = false
 
+        distanceBetweenPlayerEnemy = Vector3.Distance(transform.localPosition, playerUnit.transform.localPosition);
+        if(distanceBetweenPlayerEnemy > 2.0f)
+        {
+            isHit = false;
+            anim.SetBool("InCombat", false);
+        }
     }
 
 

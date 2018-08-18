@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
 	void Update ()
     {
         Movement();
-        if(Input.GetMouseButtonDown(0) && isGrounded == true)
+        if(Input.GetKeyDown(KeyCode.L) && isGrounded == true)
         {
             _player.Attack();
         }
