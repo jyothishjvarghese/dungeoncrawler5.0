@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour, IDamageable {
 
     [SerializeField]
     protected float _jumpForce = 5.0f;
@@ -13,11 +13,11 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private LayerMask groundLayer;
     private bool resetJumpNeeded;
-    //get handle for rigidbody2d
     protected Rigidbody2D _rigid;
     private PlayerAnimation _player;
     
-
+    public int Health { get; set; }
+    
 	// Use this for initialization
 	void Start ()
     {
@@ -77,4 +77,8 @@ public class Player : MonoBehaviour {
             yield return new WaitForSeconds(0.1f);
             resetJumpNeeded = false;
         }
+    public void Damage()
+    {
+        Debug.Log("Player::Damage");
+    }
 }

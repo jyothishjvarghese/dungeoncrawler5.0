@@ -20,6 +20,7 @@ public abstract class Enemy : MonoBehaviour
     //get variable to enemy
     protected Player playerUnit;
     private float distanceBetweenPlayerEnemy;
+    protected bool isDead = false;
 
     public virtual void Init()
     {
@@ -39,7 +40,11 @@ public abstract class Enemy : MonoBehaviour
         {
             return;
         }
-        Movement();
+
+        if (isDead == false)
+        {
+            Movement();
+        }
     }
 
     public virtual void Movement()
@@ -47,21 +52,17 @@ public abstract class Enemy : MonoBehaviour
 
         if (transform.position == pointA.position)
         {
-           
             _switch = false;
             anim.SetTrigger("Idle");
             sprite.flipX = false;
-            
-                   
+                              
         }
         else if (transform.position == pointB.position)
         {
-            
             _switch = true;
             anim.SetTrigger("Idle");
             sprite.flipX = true;
-            
-            
+                      
         }
 
         if (isHit == false)
@@ -82,6 +83,15 @@ public abstract class Enemy : MonoBehaviour
         {
             isHit = false;
             anim.SetBool("InCombat", false);
+        }
+        Vector3 direction = playerUnit.transform.position - transform.position;
+        if(direction.x > 0 && anim.GetBool("InCombat") == true)
+        {
+            sprite.flipX = false;
+        }
+        else if(direction.x < 0 && anim.GetBool("InCombat") == true)
+        {
+            sprite.flipX = true;
         }
     }
 
