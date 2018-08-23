@@ -31,6 +31,7 @@ public class Player : MonoBehaviour, IDamageable {
 	void Update ()
     {
         Movement();
+        //this code starts the attack module
         if(Input.GetKeyDown(KeyCode.L) && isGrounded == true)
         {
             _player.Attack();
@@ -39,10 +40,10 @@ public class Player : MonoBehaviour, IDamageable {
 
     public void Movement()
     {
-        
+        //a left s right
         float transition = Input.GetAxis("Horizontal");
         
-              
+        //jump      
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
         {
             
@@ -53,6 +54,8 @@ public class Player : MonoBehaviour, IDamageable {
             StartCoroutine(ResetJumpRoutine());
         }
 
+        //check whether u can jump or not
+        //draw a line that hits the ground
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 0.8f, 1 << 8);
         Debug.DrawRay(transform.position, Vector2.down * 0.8f, Color.green);
 
@@ -68,6 +71,7 @@ public class Player : MonoBehaviour, IDamageable {
         else
             isGrounded = false;
 
+        //run with a specific speed without jump
          _rigid.velocity = new Vector2(transition * _speed, _rigid.velocity.y);
         _player.Run(transition);
         

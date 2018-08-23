@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MossGiant : Enemy, IDamageable
 {
+    //instantiate the variables
     public int Health { get; set; }
 
     public override void Init()
@@ -11,6 +12,7 @@ public class MossGiant : Enemy, IDamageable
         base.Init();
         Health = base.health;
     }
+    //specific code for moss giant on what damage does to him
     public void Damage()
     {
         Health--;

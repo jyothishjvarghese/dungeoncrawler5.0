@@ -7,6 +7,7 @@ public class Attack : MonoBehaviour
 
     private bool _canDamage = true;
     
+    //determines what happens when you collide two different colliders
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hit : " + other.name);

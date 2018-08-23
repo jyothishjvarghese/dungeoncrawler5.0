@@ -36,11 +36,13 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Update()
     {
+        //This is to pause the object at its different waypoints
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle") && anim.GetBool("InCombat") == false)
         {
             return;
         }
 
+        //if Dead, then stop moving
         if (isDead == false)
         {
             Movement();
@@ -49,7 +51,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void Movement()
     {
-
+        //if at pointA, stop moving, play the idle animation, flip the sprite
         if (transform.position == pointA.position)
         {
             _switch = false;
@@ -64,26 +66,23 @@ public abstract class Enemy : MonoBehaviour
             sprite.flipX = true;
                       
         }
-
+        //if not in combat, then move betwen point a and point b
         if (isHit == false)
-
         {
             if (_switch == false)
                 transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
             else if (_switch == true)
                 transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
         }
-        //check for distance between enemy and player 
-        //if greater than 2 units
-        //isHit = false 
-        //InCombat = false
-
+        
+        //check for distance between player and enemy to check whether if it is in combat or not
         distanceBetweenPlayerEnemy = Vector3.Distance(transform.localPosition, playerUnit.transform.localPosition);
         if(distanceBetweenPlayerEnemy > 2.0f)
         {
             isHit = false;
             anim.SetBool("InCombat", false);
         }
+        //this makes the enemy face the player during combat
         Vector3 direction = playerUnit.transform.position - transform.position;
         if(direction.x > 0 && anim.GetBool("InCombat") == true)
         {

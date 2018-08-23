@@ -26,6 +26,7 @@ public class Spider : Enemy, IDamageable
         }
 
     }
+    //stops the spider from following the movement code
     public override void Movement()
     {
        

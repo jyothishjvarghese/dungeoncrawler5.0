@@ -20,6 +20,7 @@ public class PlayerAnimation : MonoBehaviour
         _swordAnimation = transform.GetChild(1).GetComponent<Animator>();
         _swordSprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
     }
+    //player run animation code
     public void Run(float move)
     {
 
@@ -30,11 +31,12 @@ public class PlayerAnimation : MonoBehaviour
             Flip(true);
 
     }
+    //player jump animation code
     public void Jump()
     {
         _anim.SetTrigger("Jump");
     }
-
+    //flip if needed
     public void Flip(bool faceRight)
     {
         if(faceRight == true)
@@ -43,6 +45,7 @@ public class PlayerAnimation : MonoBehaviour
             _swordSprite.flipX = false;
             _swordSprite.flipY = false;
 
+            //move the sprite by 1.01f 
             Vector3 newPos = _swordSprite.transform.localPosition;
             newPos.x = 1.01f;
             _swordSprite.transform.localPosition = newPos;
@@ -59,6 +62,7 @@ public class PlayerAnimation : MonoBehaviour
         }
 
     }
+    //call attack animation
     public void Attack()
     {
         _anim.SetTrigger("Attack");
