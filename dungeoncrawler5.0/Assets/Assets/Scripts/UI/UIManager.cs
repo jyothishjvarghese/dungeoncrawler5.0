@@ -20,6 +20,14 @@ public class UIManager : MonoBehaviour
 
     public Text playerGemCountText;
     public Image selectionImg;
+    public Text gemCountText;
+    public Image[] healthBars;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
 
     public void OpenShop(int gemCount)
     {
@@ -31,9 +39,22 @@ public class UIManager : MonoBehaviour
         selectionImg.rectTransform.anchoredPosition = new Vector2(selectionImg.rectTransform.anchoredPosition.x, yPos);
     }
 
-    private void Awake()
+    public void UpdateGemCount(int count)
     {
-        _instance = this;
+        gemCountText.text = "" + count;
     }
 
+    public void UpdateLives(int livesRemaining)
+    {
+        for(int i = 0; i <= livesRemaining; i++)
+        {
+            //do nothing till we hit the max
+            if(i == livesRemaining)
+            {
+                //hide this one
+                healthBars[i].enabled = false;
+            }
+        }
+
+    }
 }

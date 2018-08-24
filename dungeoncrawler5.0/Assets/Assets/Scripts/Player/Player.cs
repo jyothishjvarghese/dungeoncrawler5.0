@@ -28,6 +28,7 @@ public class Player : MonoBehaviour, IDamageable {
         //assign handle for rigidbody
         _rigid = GetComponent<Rigidbody2D>();
         _player = GetComponent<PlayerAnimation>();
+        Health = 4; 
 	}
 	
 	// Update is called once per frame
@@ -86,6 +87,24 @@ public class Player : MonoBehaviour, IDamageable {
         }
     public void Damage()
     {
+        if(Health < 1)
+        {
+            return;
+        }
         Debug.Log("Player::Damage");
+        Health--;
+        UIManager.Instance.UpdateLives(Health);
+
+        if (Health < 1)
+        {
+            _player.Death();
+        }
+
+    }
+
+    public void AddGems(int amount)
+    {
+        diamonds += amount;
+        UIManager.Instance.UpdateGemCount(diamonds);
     }
 }
