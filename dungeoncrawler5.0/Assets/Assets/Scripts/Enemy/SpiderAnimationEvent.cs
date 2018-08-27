@@ -15,7 +15,7 @@ public class SpiderAnimationEvent : MonoBehaviour
     public void Fire()
     {
         //Tell spider to fire
-       // Debug.Log("Spider should fire!");
+        Debug.Log("Spider should fire!");
         //use handle to call Attack method on spider
         spiderUnit.Attack();
     }
