@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MossGiant : Enemy, IDamageable
+public class MossGiant : Enemy
 {
+<<<<<<< HEAD
     //instantiate the variables
     public int Health { get; set; }
 
@@ -30,6 +31,11 @@ public class MossGiant : Enemy, IDamageable
             diamond.GetComponent<diamond>().gems = base.gems;
         }
 
+=======
+    public override void Init()
+    {
+        base.Init();
+>>>>>>> parent of bf1ed15... Version11.27
     }
     
 }

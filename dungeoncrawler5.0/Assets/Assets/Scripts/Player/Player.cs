@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamageable {
+public class Player : MonoBehaviour {
 
 
     public int diamonds;
@@ -16,11 +16,11 @@ public class Player : MonoBehaviour, IDamageable {
     [SerializeField]
     private LayerMask groundLayer;
     private bool resetJumpNeeded;
+    //get handle for rigidbody2d
     protected Rigidbody2D _rigid;
     private PlayerAnimation _player;
     
-    public int Health { get; set; }
-    
+
 	// Use this for initialization
 	void Start ()
     {
@@ -85,6 +85,7 @@ public class Player : MonoBehaviour, IDamageable {
             yield return new WaitForSeconds(0.1f);
             resetJumpNeeded = false;
         }
+<<<<<<< HEAD
     public void Damage()
     {
         if(Health < 1)
@@ -107,4 +108,6 @@ public class Player : MonoBehaviour, IDamageable {
         diamonds += amount;
         UIManager.Instance.UpdateGemCount(diamonds);
     }
+=======
+>>>>>>> parent of bf1ed15... Version11.27
 }

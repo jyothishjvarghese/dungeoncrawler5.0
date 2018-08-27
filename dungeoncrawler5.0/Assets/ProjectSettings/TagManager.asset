@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Spider
   layers:
   - Default
   - TransparentFX
@@ -18,8 +17,8 @@ TagManager:
   - Ground
   - Sword
   - Player
-  - EnemyAttack
-  - Enemy
+  - 
+  - 
   - 
   - 
   - 

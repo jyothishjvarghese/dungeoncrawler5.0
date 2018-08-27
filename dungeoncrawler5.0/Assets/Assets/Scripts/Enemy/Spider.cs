@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< HEAD
 public class Spider : Enemy, IDamageable
 {
     public GameObject acidEffectPrefab;
@@ -42,4 +43,9 @@ public class Spider : Enemy, IDamageable
         //instantiate the acid effect
         Instantiate(acidEffectPrefab, transform.position, Quaternion.identity);
     }
+=======
+public class Spider : Enemy
+{ 
+    
+>>>>>>> parent of bf1ed15... Version11.27
 }

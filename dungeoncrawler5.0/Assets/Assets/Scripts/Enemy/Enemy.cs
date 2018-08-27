@@ -22,7 +22,6 @@ public abstract class Enemy : MonoBehaviour
     //get variable to enemy
     protected Player playerUnit;
     private float distanceBetweenPlayerEnemy;
-    protected bool isDead = false;
 
     public virtual void Init()
     {
@@ -43,12 +42,16 @@ public abstract class Enemy : MonoBehaviour
         {
             return;
         }
+<<<<<<< HEAD
 
         //if Dead, then stop moving
         if (isDead == false)
         {
             Movement();
         }
+=======
+        Movement();
+>>>>>>> parent of bf1ed15... Version11.27
     }
 
     public virtual void Movement()
@@ -56,17 +59,21 @@ public abstract class Enemy : MonoBehaviour
         //if at pointA, stop moving, play the idle animation, flip the sprite
         if (transform.position == pointA.position)
         {
+           
             _switch = false;
             anim.SetTrigger("Idle");
             sprite.flipX = false;
-                              
+            
+                   
         }
         else if (transform.position == pointB.position)
         {
+            
             _switch = true;
             anim.SetTrigger("Idle");
             sprite.flipX = true;
-                      
+            
+            
         }
         //if not in combat, then move betwen point a and point b
         if (isHit == false)
@@ -84,6 +91,7 @@ public abstract class Enemy : MonoBehaviour
             isHit = false;
             anim.SetBool("InCombat", false);
         }
+<<<<<<< HEAD
         //this makes the enemy face the player during combat
         Vector3 direction = playerUnit.transform.position - transform.position;
         if(direction.x > 0 && anim.GetBool("InCombat") == true)
@@ -94,6 +102,8 @@ public abstract class Enemy : MonoBehaviour
         {
             sprite.flipX = true;
         }
+=======
+>>>>>>> parent of bf1ed15... Version11.27
     }
 
 
